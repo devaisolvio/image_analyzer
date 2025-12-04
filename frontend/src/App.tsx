@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Upload, Loader2, CheckCircle2 } from 'lucide-react';
+import { Upload, Loader2, CheckCircle2, CircleQuestionMark } from 'lucide-react';
 import axios from "axios"
 
 type AiResponse={
@@ -19,7 +19,7 @@ export default function ImageCheckpointUI() {
   const [isLoading, setIsLoading] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [aiResponse ,setAiResponse ]= useState<AiResponse | null>(null)
-
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
 const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0];
   if (file && file.type.startsWith('image/')) {
@@ -70,7 +70,7 @@ const res = await axios.post(
       setIsLoading(false)
     }
   };
- console.log(aiResponse);
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <div className="container mx-auto px-4 py-8">
@@ -132,7 +132,104 @@ const res = await axios.post(
 
           {/* Right Side - Results Section */}
           <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h2 className="text-xl font-semibold mb-4">Analysis Results</h2>
+            <div className=' relative mb-4 flex items-center justify-between w-full' >
+              <h2 className="text-xl font-semibold ">Analysis Results</h2>
+              <p className='bg-blue-600   rounded-lg px-1 py-1  flex gap-2'      onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}>Rubrik Info <CircleQuestionMark/></p>
+             
+          <div
+    className={`
+      absolute right-30 -top-10 mb-2 w-80 bg-slate-900 text-white rounded-lg shadow-2xl z-50 p-4 border border-slate-700
+      transition-all duration-200 ease-out
+      ${showTooltip ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"}
+    `}
+  >
+          {/* Header */}
+          <div className="border-b border-slate-700 pb-2 mb-3">
+            <h3 className="font-bold text-sm text-blue-400">Banner Quality Rubric</h3>
+            <p className="text-xs text-slate-400 mt-0.5">All 6 checkpoints must pass</p>
+          </div>
+
+          {/* Checkpoints Grid */}
+          <div className="space-y-2.5">
+            {/* Attention */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">👁️</span>
+                <span className="font-semibold text-xs text-blue-300">Attention</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                Headline ≥20% • 1 focal point • Max 5 elements • ≥20% white space • Bold colors
+              </p>
+            </div>
+
+            {/* Clarity */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">💬</span>
+                <span className="font-semibold text-xs text-blue-300">Clarity</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                Understand &lt;2s • Max 3 info pieces • ≤8 word headline • Max 2 locations
+              </p>
+            </div>
+
+            {/* Emotion */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">❤️</span>
+                <span className="font-semibold text-xs text-blue-300">Emotion</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                Min 2 power words • Urgency language • Action verb CTA • Appealing imagery
+              </p>
+            </div>
+
+            {/* Typography */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">🔤</span>
+                <span className="font-semibold text-xs text-blue-300">Typography</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                Max 3 fonts • Headline 3x body size • Price ≥15% height • Professional fonts
+              </p>
+            </div>
+
+            {/* Contrast */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">🎨</span>
+                <span className="font-semibold text-xs text-blue-300">Contrast</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                7:1 contrast ratio • All text readable • No text on busy backgrounds
+              </p>
+            </div>
+
+            {/* Imagery */}
+            <div className="bg-slate-800 rounded p-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <span className="text-xs">🖼️</span>
+                <span className="font-semibold text-xs text-blue-300">Imagery</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-tight">
+                Hero image ≥30% • High resolution • Professional photos • Appetizing food
+              </p>
+            </div>
+          </div>
+
+          {/* Auto-Fail */}
+          <div className="mt-3 pt-3 border-t border-slate-700">
+            <div className="bg-red-900/30 border border-red-700/50 rounded p-2">
+              <p className="text-xs font-semibold text-red-400 mb-1">Auto-Fail if:</p>
+              <p className="text-xs text-slate-300 leading-tight">
+                Missing info • 4+ locations • 3+ sponsors • Design defects • Unprofessional look
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
             
           
             
