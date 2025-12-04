@@ -167,7 +167,7 @@ Only raw JSON.
           {
             role: "user",
             content: [
-			{
+	/* 		{
   type: "text",
   text: "Here is the image that you have to analyze and check if this is fit for production"
 },
@@ -201,7 +201,7 @@ Only raw JSON.
     url: "https://api-worker.dev-f07.workers.dev/references/reference_3.jpg",
 	 detail: "low" 
   }
-},
+}, */
 {
   type: "text",
   text: "Now analyze the submitted banner image and provide your assessment in the required JSON format."
