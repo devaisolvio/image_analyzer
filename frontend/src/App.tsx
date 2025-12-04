@@ -4,7 +4,14 @@ import axios from "axios"
 
 type AiResponse={
   checkpoints:{ [key:string]:string},
-  summary:string
+  evaluation_summary : {
+      overall_assessment: string,
+  key_strengths: [string],
+  critical_issues: [string ],
+  failed_checkpoints: [string
+  ],
+  recommendation: string
+  }
 }
 
 export default function ImageCheckpointUI() {
@@ -165,12 +172,54 @@ const res = await axios.post(
                     </div>
 
                         
-                    <div className="bg-gray-700 rounded-lg p-4">
-                      <h3 className="font-semibold mb-2">Summary</h3>
-                      <p className="text-sm text-gray-300">
-                        {aiResponse?.summary}
-                      </p>
-                    </div>
+                   {aiResponse?.evaluation_summary && (
+  <div className="bg-gray-700 rounded-lg p-4 mt-4">
+    <h3 className="font-semibold mb-2">Evaluation Summary</h3>
+
+    {/* Overall Assessment */}
+    <p className="text-sm text-gray-300 mb-3">
+      <span className="font-semibold text-white">Overall Assessment: </span>
+      {aiResponse.evaluation_summary.overall_assessment}
+    </p>
+
+    {/* Key Strengths */}
+    <div className="mb-3">
+      <h4 className="font-semibold text-white text-sm">Key Strengths:</h4>
+      <ul className="list-disc ml-5 text-gray-300 text-sm">
+        {aiResponse.evaluation_summary.key_strengths?.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Critical Issues */}
+    <div className="mb-3">
+      <h4 className="font-semibold text-white text-sm">Critical Issues:</h4>
+      <ul className="list-disc ml-5 text-red-300 text-sm">
+        {aiResponse.evaluation_summary.critical_issues?.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Failed Checkpoints */}
+    <div className="mb-3">
+      <h4 className="font-semibold text-white text-sm">Failed Checkpoints:</h4>
+      <ul className="list-disc ml-5 text-yellow-300 text-sm">
+        {aiResponse.evaluation_summary.failed_checkpoints?.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Recommendation */}
+    <p className="text-sm text-green-300 mt-3">
+      <span className="font-semibold text-white">Recommendation: </span>
+      {aiResponse.evaluation_summary.recommendation}
+    </p>
+  </div>
+)}
+
                   </div>
                 )}
               </div>
