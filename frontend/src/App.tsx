@@ -135,7 +135,7 @@ const res = await axios.post(
             <div className=' relative mb-4 flex items-center justify-between w-full' >
               <h2 className="text-xl font-semibold ">Analysis Results</h2>
               <p className='bg-blue-600   rounded-lg px-1 py-1  flex gap-2'      onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}>Rubrik Info <CircleQuestionMark/></p>
+        onMouseLeave={() => setShowTooltip(false)}> <CircleQuestionMark/></p>
              
           <div
     className={`
@@ -219,15 +219,7 @@ const res = await axios.post(
             </div>
           </div>
 
-          {/* Auto-Fail */}
-          <div className="mt-3 pt-3 border-t border-slate-700">
-            <div className="bg-red-900/30 border border-red-700/50 rounded p-2">
-              <p className="text-xs font-semibold text-red-400 mb-1">Auto-Fail if:</p>
-              <p className="text-xs text-slate-300 leading-tight">
-                Missing info • 4+ locations • 3+ sponsors • Design defects • Unprofessional look
-              </p>
-            </div>
-          </div>
+         
         </div>
       </div>
             
