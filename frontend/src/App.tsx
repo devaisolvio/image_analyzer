@@ -134,7 +134,7 @@ const res = await axios.post(
           <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
             <div className=' relative mb-4 flex items-center justify-between w-full' >
               <h2 className="text-xl font-semibold ">Analysis Results</h2>
-              <p className='bg-blue-600   rounded-lg px-1 py-1  flex gap-2'      onMouseEnter={() => setShowTooltip(true)}
+              <p className='text-blue-600  rounded-lg px-1 py-1  flex gap-2'      onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}> <CircleQuestionMark/></p>
              
           <div
@@ -159,7 +159,8 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Attention</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                Headline ≥20% • 1 focal point • Max 5 elements • ≥20% white space • Bold colors
+  Your main message should stand out clearly, with one main focus and a clean, uncluttered layout.
+
               </p>
             </div>
 
@@ -170,7 +171,7 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Clarity</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                Understand &lt;2s • Max 3 info pieces • ≤8 word headline • Max 2 locations
+  People should understand the message instantly — simple wording and only the most important details.
               </p>
             </div>
 
@@ -181,8 +182,7 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Emotion</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                Min 2 power words • Urgency language • Action verb CTA • Appealing imagery
-              </p>
+Use words and visuals that make the message feel exciting, appealing, or motivating.              </p>
             </div>
 
             {/* Typography */}
@@ -192,8 +192,7 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Typography</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                Max 3 fonts • Headline 3x body size • Price ≥15% height • Professional fonts
-              </p>
+Text should be easy to read, with clear fonts and a bold headline that stands out.              </p>
             </div>
 
             {/* Contrast */}
@@ -203,7 +202,7 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Contrast</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                7:1 contrast ratio • All text readable • No text on busy backgrounds
+                Colors should make the text easy to read — no low-contrast or busy backgrounds behind text.
               </p>
             </div>
 
@@ -214,7 +213,7 @@ const res = await axios.post(
                 <span className="font-semibold text-xs text-blue-300">Imagery</span>
               </div>
               <p className="text-xs text-slate-300 leading-tight">
-                Hero image ≥30% • High resolution • Professional photos • Appetizing food
+               Pictures should look sharp, professional, and support the message
               </p>
             </div>
           </div>
