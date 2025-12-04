@@ -153,8 +153,8 @@ const res = await axios.post(
   Object.entries(aiResponse.checkpoints).map(([key, value], idx) => (
     <div key={idx} className="flex justify-between">
       <span className="text-gray-400">{key}:</span>
-      <span className={value == "passed" ? "text-green-400" : "text-red-400"}>
-        {value == "passed" ? "✓ Passed" : "✗ Failed"}
+      <span className={value == "pass" ? "text-green-400" : "text-red-400"}>
+        {value == "pass" ? "✓ Passed" : "✗ Failed"}
       </span>
     </div>
   ))
@@ -164,6 +164,7 @@ const res = await axios.post(
                       </div>
                     </div>
 
+                        
                     <div className="bg-gray-700 rounded-lg p-4">
                       <h3 className="font-semibold mb-2">Summary</h3>
                       <p className="text-sm text-gray-300">
