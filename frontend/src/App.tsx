@@ -72,7 +72,7 @@ const res = await axios.post(
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
+    <div className="min-h-screen flex flex-col justify-between bg-gray-900 text-gray-100">
      
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl  font-bold text-center mb-8">Sign Intelligence Analyzer  
@@ -318,7 +318,15 @@ Text should be easy to read, with clear fonts and a bold headline that stands ou
           </div>
         </div>
       </div>
-      <img src="./logo2.jpg" className=' absolute bottom-5 right-35  w-[15%]' alt="" />
+   <footer className="w-[90%] px-6 py-4 flex justify-end">
+  <img 
+    src="./logo2.jpg" 
+    className="w-50 opacity-80 hover:opacity-100 transition"
+    alt="Logo"
+  />
+</footer>
+
+
     </div>
   );
 }
